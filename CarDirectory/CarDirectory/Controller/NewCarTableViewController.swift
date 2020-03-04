@@ -24,6 +24,9 @@ class NewCarTableViewController: UITableViewController {
     
         saveBtn.isEnabled = false
         carManufacturer.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        carModel.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        carBodyType.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        carYear.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         setupEditScreen()
         
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
@@ -78,12 +81,11 @@ extension NewCarTableViewController: UITextFieldDelegate {
     }
     // Btn save enabl , disable
     @objc private func textFieldChanged() {
-        if carManufacturer.text?.isEmpty == false {
+        if carManufacturer.text?.isEmpty == false && carModel.text?.isEmpty == false && carBodyType.text?.isEmpty == false && carYear.text?.isEmpty == false{
             saveBtn.isEnabled = true
         }else{
             saveBtn.isEnabled = false
         }
-        
     }
 }
 
